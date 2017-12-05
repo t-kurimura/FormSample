@@ -1,11 +1,13 @@
 package com.sample.formsample
 
+import android.app.DatePickerDialog
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import com.sample.formsample.databinding.ActivityFormBinding
 import io.reactivex.disposables.CompositeDisposable
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
+import java.util.*
 
 
 class FormActivity : AppCompatActivity() {
@@ -28,6 +30,17 @@ class FormActivity : AppCompatActivity() {
         .setTitle("性別を選択してください")
         .setItems(items, { dialog, which -> properties.isMan = (which == 0) })
         .show()
+  }
+
+  fun onBirthdayClicked() {
+    DatePickerDialog(
+        this,
+         DatePickerDialog.OnDateSetListener({view, y, m, d ->
+           properties.birthday = Calendar.getInstance().apply { set(y, m, d) }
+         }),
+        1950,
+        0 ,
+        0).show()
   }
 
   fun register() {
