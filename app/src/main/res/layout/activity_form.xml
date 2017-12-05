@@ -1,13 +1,12 @@
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     >
 
     <data>
 
         <variable
-            name="presenter"
-            type="com.sample.formsample"
+            name="activity"
+            type="com.sample.formsample.FormActivity"
             />
     </data>
 
@@ -27,182 +26,117 @@
             >
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:onClick="@{() -> activity.onGenderClicked()}"
+                android:orientation="vertical"
+                android:layout_marginBottom="8dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:layout_marginBottom="32dp"
                 >
 
-                <LinearLayout
-                    android:layout_width="0dp"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:onClick="@{() -> presenter.onGenderClicked()}"
-                    android:orientation="vertical"
-                    >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:text="ニックネーム"
-                        android:textColor="#8d9399"
-                        android:textSize="12sp"
-                        />
-
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@null"
-                        android:inputType="text"
-                        android:maxEms="15"
-                        android:maxLines="1"
-                        android:minLines="1"
-                        android:text="@={presenter.viewStore.nickname}"
-                        android:textColor="#788086"
-                        android:textSize="16sp"
-                        />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="2dp"
-                        android:background="@android:color/darker_gray"
-                        />
-
-                </LinearLayout>
-
-                <android.support.v4.widget.Space
-                    android:layout_width="24dp"
-                    android:layout_height="match_parent"
+                    android:layout_marginBottom="4dp"
+                    android:text="ニックネーム"
+                    android:textColor="#8d9399"
+                    android:textSize="12sp"
                     />
 
-                <LinearLayout
-                    android:layout_width="0dp"
+                <EditText
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:onClick="@{() -> presenter.onGenderClicked()}"
-                    android:orientation="vertical"
-                    >
+                    android:background="@null"
+                    android:inputType="text"
+                    android:maxEms="15"
+                    android:maxLines="1"
+                    android:minLines="1"
+                    android:text="@={activity.properties.nickname}"
+                    android:textColor="#788086"
+                    android:textSize="16sp"
+                    />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:text="性別"
-                        android:textColor="#8d9399"
-                        android:textSize="12sp"
-                        />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="2dp"
+                    android:background="@{activity.properties.isValidNickNameField() ? @android:color/darker_gray : @android:color/holo_green_dark}"
+                    />
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@null"
-                        android:enabled="false"
-                        android:maxEms="12"
-                        android:text="@{presenter.viewStore.isManField == null ? ' ' : (presenter.viewStore.isManField ? '男性' : '女性')}"
-                        android:textColor="#788086"
-                        android:textSize="16sp"
-                        />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="2dp"
-                        android:background="@android:color/darker_gray"
-                        />
-
-                </LinearLayout>
             </LinearLayout>
 
-
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:onClick="@{() -> presenter.onGenderClicked()}"
+                android:orientation="vertical"
+                android:layout_marginBottom="8dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:layout_marginBottom="32dp"
                 >
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:onClick="@{() -> presenter.onBirthdayClicked()}"
-                    android:orientation="vertical"
-                    >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:text="生年月日"
-                        android:textColor="#8d9399"
-                        android:textSize="12sp"
-                        />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@null"
-                        android:enabled="false"
-                        android:maxEms="12"
-                        android:text="@={presenter.viewStore.birthdayLabelField}"
-                        android:textColor="#788086"
-                        android:textSize="16sp"
-                        />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="2dp"
-                        android:background="@android:color/darker_gray"
-                        />
-                </LinearLayout>
-
-                <android.support.v4.widget.Space
-                    android:layout_width="24dp"
-                    android:layout_height="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="性別"
+                    android:textColor="#8d9399"
+                    android:textSize="12sp"
                     />
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:onClick="@{() -> presenter.onResidenceClicked()}"
-                    android:orientation="vertical"
-                    >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:enabled="false"
+                    android:maxEms="12"
+                    android:text="@{activity.properties.genderValueField ? @string/male : @string/female}"
+                    android:textColor="#788086"
+                    android:textSize="16sp"
+                    />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:text="居住地"
-                        android:textColor="#8d9399"
-                        android:textSize="12sp"
-                        />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="2dp"
+                    android:background="@{activity.properties.isValidGenderField() ? @android:color/darker_gray : @android:color/holo_green_dark}"
+                    />
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@null"
-                        android:enabled="false"
-                        android:maxEms="12"
-                        android:text="@={presenter.viewStore.residenceNameField}"
-                        android:textColor="#788086"
-                        android:textSize="16sp"
-                        />
+            </LinearLayout>
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="2dp"
-                        android:background="@android:color/darker_gray"
-                        />
-                </LinearLayout>
+            <LinearLayout
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> presenter.onBirthdayClicked()}"
+                android:orientation="vertical"
+                android:layout_gravity="center_horizontal"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="生年月日"
+                    android:textColor="#8d9399"
+                    android:textSize="12sp"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:enabled="false"
+                    android:maxEms="12"
+                    android:text="@={activity.properties.birthdayValueField}"
+                    android:textColor="#788086"
+                    android:textSize="16sp"
+                    />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="2dp"
+                    android:background="@{activity.properties.isValidBirthdayField() ? @android:color/darker_gray : @android:color/holo_green_dark}"
+                    />
             </LinearLayout>
 
             <LinearLayout
@@ -212,6 +146,7 @@
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
                 android:layout_marginBottom="32dp"
+                android:layout_marginTop="32dp"
                 >
 
 
@@ -219,7 +154,7 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:button="@drawable/checkbox_multi"
-                    android:onClick="@{(v) -> presenter.viewStore.onCheckedChanged(v)}"
+                    android:onClick="@{(v) -> activity.properties.onCheckedChanged(v)}"
                     android:padding="16dp"
                     />
 
@@ -243,9 +178,9 @@
                 android:layout_marginRight="80dp"
                 android:layout_marginBottom="4dp"
                 android:gravity="center"
-                android:onClick="@{() -> presenter.onRegistrationButtonClicked(method)}"
+                android:onClick="@{() -> activity.register()}"
                 android:text="次へ"
-                android:background="@android:color/darker_gray"
+                android:background="@{activity.properties.canRegister() ? @android:color/darker_gray : @android:color/holo_green_dark}"
                 android:textColor="#ffffff"
                 android:textStyle="bold"
                 />
