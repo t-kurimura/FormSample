@@ -45,7 +45,7 @@ class FormProperties {
     set(value) {
       field = value
       value?.let {
-        birthdayValueField.set(SimpleDateFormat("YYYY/MM/DD").format(value.time))
+        birthdayValueField.set(SimpleDateFormat("yyyy/MM/dd", Locale.JAPAN).format(value.time))
         birthdaySubject.onNext(value)
       }
     }

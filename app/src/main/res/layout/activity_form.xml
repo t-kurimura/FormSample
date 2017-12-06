@@ -1,190 +1,159 @@
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    >
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-
+        <import type="android.view.View" />
         <variable
             name="activity"
-            type="com.sample.formsample.FormActivity"
-            />
+            type="com.sample.formsample.FormActivity" />
     </data>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/white"
-        >
+        android:background="@android:color/white">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:descendantFocusability="beforeDescendants"
             android:focusableInTouchMode="true"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginBottom="8dp"
-                android:layout_gravity="center_horizontal"
-                >
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:text="ニックネーム"
-                    android:textColor="#8d9399"
-                    android:textSize="12sp"
-                    />
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@null"
-                    android:inputType="text"
-                    android:maxEms="15"
-                    android:maxLines="1"
-                    android:minLines="1"
-                    android:text="@={activity.properties.nickname}"
-                    android:textColor="#788086"
-                    android:textSize="16sp"
-                    />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="2dp"
-                    android:background="@{activity.properties.isValidNickNameField() ? @android:color/darker_gray : @android:color/holo_green_dark}"
-                    />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:onClick="@{() -> presenter.onGenderClicked()}"
-                android:orientation="vertical"
-                android:layout_marginBottom="8dp"
-                android:layout_gravity="center_horizontal"
-                >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:text="性別"
-                    android:textColor="#8d9399"
-                    android:textSize="12sp"
-                    />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@null"
-                    android:enabled="false"
-                    android:maxEms="12"
-                    android:text="@{activity.properties.genderValueField ? @string/male : @string/female}"
-                    android:textColor="#788086"
-                    android:textSize="16sp"
-                    />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="2dp"
-                    android:background="@{activity.properties.isValidGenderField() ? @android:color/darker_gray : @android:color/holo_green_dark}"
-                    />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:onClick="@{() -> presenter.onBirthdayClicked()}"
-                android:orientation="vertical"
-                android:layout_gravity="center_horizontal"
-                >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:text="生年月日"
-                    android:textColor="#8d9399"
-                    android:textSize="12sp"
-                    />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@null"
-                    android:enabled="false"
-                    android:maxEms="12"
-                    android:text="@={activity.properties.birthdayValueField}"
-                    android:textColor="#788086"
-                    android:textSize="16sp"
-                    />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="2dp"
-                    android:background="@{activity.properties.isValidBirthdayField() ? @android:color/darker_gray : @android:color/holo_green_dark}"
-                    />
-            </LinearLayout>
-
-            <LinearLayout
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="ニックネーム"
+                android:textColor="#8d9399"
+                android:textSize="12sp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="@null"
+                android:inputType="text"
+                android:maxEms="15"
+                android:maxLines="1"
+                android:minLines="1"
+                android:text="@={activity.properties.nickname}"
+                android:textColor="#788086"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="2dp"
+                android:background="@{activity.properties.isValidNickNameField ? @android:color/holo_green_dark : @android:color/darker_gray}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginBottom="24dp"
+                android:text="OK"
+                android:textColor="@android:color/holo_green_dark"
+                android:visibility="@{activity.properties.isValidNickNameField ? View.VISIBLE : View.INVISIBLE}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:onClick="@{() -> activity.onGenderClicked()}"
+                android:text="性別"
+                android:textColor="#8d9399"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:enabled="false"
+                android:maxEms="12"
+                android:onClick="@{() -> activity.onGenderClicked()}"
+                android:text="@{activity.properties.genderValueField == null ? @string/empty  : (activity.properties.genderValueField ? @string/male : @string/female)}"
+                android:textColor="#788086"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="2dp"
+                android:background="@{activity.properties.isValidGenderField ? @android:color/holo_green_dark : @android:color/darker_gray}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginBottom="24dp"
+                android:text="OK"
+                android:textColor="@android:color/holo_green_dark"
+                android:visibility="@{activity.properties.isValidGenderField ? View.VISIBLE : View.INVISIBLE}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:onClick="@{() -> activity.onBirthdayClicked()}"
+                android:text="生年月日"
+                android:textColor="#8d9399"
+                android:textSize="12sp" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:enabled="false"
+                android:maxEms="12"
+                android:maxLines="1"
+                android:onClick="@{() -> activity.onBirthdayClicked()}"
+                android:text="@={activity.properties.birthdayValueField}"
+                android:textColor="#788086"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="2dp"
+                android:background="@{activity.properties.isValidBirthdayField ? @android:color/holo_green_dark : @android:color/darker_gray}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="OK"
+                android:textColor="@android:color/holo_green_dark"
+                android:visibility="@{activity.properties.isValidBirthdayField ? View.VISIBLE : View.INVISIBLE}" />
+
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
                 android:layout_marginBottom="32dp"
                 android:layout_marginTop="32dp"
-                >
-
-
-                <CheckBox
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:button="@drawable/checkbox_multi"
-                    android:onClick="@{(v) -> activity.properties.onCheckedChanged(v)}"
-                    android:padding="16dp"
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="18歳以上で独身です\n利用規約、プライバシーポリシーに同意します"
-                    android:textColor="#788086"
-                    android:textSize="12sp"
-                    />
-
-            </LinearLayout>
+                android:button="@drawable/checkbox_multi"
+                android:onClick="@{(v) -> activity.properties.onCheckedChanged(v)}"
+                android:padding="16dp"
+                android:text="利用規約に同意します"
+                android:textColor="#8d9399"
+                android:textSize="12sp" />
 
             <Button
-                android:id="@+id/next_button"
                 android:layout_width="match_parent"
                 android:layout_height="53dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="80dp"
-                android:layout_marginRight="80dp"
                 android:layout_marginBottom="4dp"
+                android:background="@{activity.properties.canRegister ? @android:color/holo_green_dark : @android:color/darker_gray}"
+                android:clickable="@{activity.properties.canRegister ? true : false}"
+                android:enabled="@{activity.properties.canRegister ? true : false}"
                 android:gravity="center"
                 android:onClick="@{() -> activity.register()}"
-                android:text="次へ"
-                android:background="@{activity.properties.canRegister() ? @android:color/darker_gray : @android:color/holo_green_dark}"
+                android:text="登録"
                 android:textColor="#ffffff"
-                android:textStyle="bold"
-                />
+                android:textStyle="bold" />
 
         </LinearLayout>
-
     </RelativeLayout>
 </layout>
